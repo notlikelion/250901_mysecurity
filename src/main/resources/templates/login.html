@@ -9,6 +9,7 @@
 </head>
 <body>
     <h2>로그인</h2>
+    <a th:href="@{/register}">회원가입</a>
     <p th:if="${param.error}">로그인 실패</p>
     <form th:action="@{/login}" method="post">
         <input name="username" required autofocus><br>

@@ -5,11 +5,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>메인</title>
+    <title>가입</title>
 </head>
 <body>
-    <h2>메인</h2>
-    <p>반가워요!</p>
-    <a th:href="@{/my-page}">마이 페이지로 가기</a>
+    <h2>가입</h2>
+    <form th:action="@{/register}" method="post">
+        <input name="username" required autofocus><br>
+        <input type="password" name="password" required >
+        <button>가입</button>
+    </form>
 </body>
 </html>
