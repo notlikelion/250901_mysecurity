@@ -2,9 +2,11 @@ package com.example.mysecurity.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
@@ -20,4 +22,26 @@ public class SecurityConfig {
     }
 
     // 미리 작성하는 이유 -> PasswordEncoder -> 저장할 때와 로그인할 때
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        // http...
+        http.
+                // authz, auth..
+            authorizeHttpRequests(auth -> auth
+                .requestMatchers("/", "/login", "/register").permitAll()
+                .requestMatchers("/mypage").hasRole("USER")
+                .anyRequest().authenticated() // 로그인된 유저한테만 허용
+                )
+            .formLogin(form -> form
+                .loginPage("/login")
+                .defaultSuccessUrl("/", true)
+            )
+            .logout(logout -> logout
+                    .logoutSuccessUrl("/")
+                    .invalidateHttpSession(true))
+            .exceptionHandling(exception -> exception.accessDeniedPage("/access-denied"))
+        ;
+        return http.build();
+    }
 }
