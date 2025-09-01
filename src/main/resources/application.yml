@@ -1,0 +1,23 @@
+spring:
+  # dev
+  profiles:
+    active: dev
+  application:
+    name: mysecurity
+# DB/JPA
+#  datasource:
+#    url:
+#    username:
+#    password:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+# security
+  security:
+    user:
+      # 테스트용 사용자 이름
+      name: user
+      password: password
+      roles: USER
