@@ -19,6 +19,8 @@ public class UserAccount {
     private String password;
     // 권한
     private String role; // USER, ADMIN
+    // 프리미엄 유저인지, 구매 기록이 있는지...
+    // 깔끔하게 A, B, C가 아니라 권한이 조합된 형태.
 
     @Builder
     public UserAccount(String username, String password, String role) {
