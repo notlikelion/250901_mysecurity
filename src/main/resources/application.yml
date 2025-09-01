@@ -15,9 +15,9 @@ spring:
       ddl-auto: update
     show-sql: true
 # security
-  security:
-    user:
-      # 테스트용 사용자 이름
-      name: user
-      password: password
-      roles: USER
+#  security:
+#    user:
+# 테스트용 사용자 이름
+#      name: user
+#      password: password
+#      roles: USER
